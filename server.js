@@ -11,13 +11,14 @@ app.use(express.static('public'));
 app.engine('.hbs', exphbs({ extname: '.hbs', defaultLayout: 'main' }));
 app.set('view engine', '.hbs');
 
-app.get('/', (req, res) => {
+app.get('/smoke', (req, res) => {
   res.send('smoke test');
 });
 
-app.use('/home', home);
 app.use('/about', about);
 app.use('/contact', contact);
+app.use('/', home);
+
 
 app.listen(PORT, () => {
   console.log(`Server started on port: ${PORT}`);
